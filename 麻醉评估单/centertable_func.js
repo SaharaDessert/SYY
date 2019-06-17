@@ -5,14 +5,10 @@ let initfirstmode = function(){
                 <td class=\"firstlevel\">\
                 <div>\
                     <div>\
-                        <div class='pretty inline'>\
                             <input type=\"radio\" checked=false>\
-                            <label><i class='mdi mdi-check'></i>是</label>\
-                        </div>\
-                        <div class='pretty inline'>\
+                            <label>是</label>\
                             <input type=\"radio\" checked=true>\
-                            <label><i class='mdi mdi-check'></i>否</label>\
-                        </div>\
+                            <label>否</label>\
                     </div>\
                 </div>\
                 </td>\
