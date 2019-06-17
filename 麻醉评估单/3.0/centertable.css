@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.center{
+    width: 90%;
+    margin: 10px auto;
+    border-collapse: collapse;
+}
+tr{
+    border-bottom: 1px solid #000;
+}
+.header{
+    border-bottom: 2px solid #000;
+}
+.header1{
+    width: 20%;
+}
+.header2{
+    width: 55%;
+}
+.header3{
+    widows: 25%;
+}
+.firstlevel{
+    text-align: center;
+    font-size: large;
+    border-right: 1px solid #000;
+}
+.secondlevel{
+    /* display: flex;
+    flex-wrap: wrap; */
+    /* justify-content: flex-start; */
+    color: #c0c0c0;
+
+}
+.secondlevel > div{
+    padding: 5px 10px;
+}
+.summurylevel{
+    border-left: 1px solid #000;    
+}
+/* .overlay{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.8;
+    z-index: 1001;
+}
+.advancedcontent{
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    border: 5px solid #c0c0c0;
+    background-color: #fff;
+    z-index: 1002;
+} */
+.selectoption{
+    color: #000;
+}
+.unselectoption{
+    color: #c0c0c0;
+}
+.showadvance{
+    display: block;
+}
+.hideadvance{
+    display: none;
+}
+.able{
+    color: #000; 
+}
+.advanced{
+    font-weight: bolder;
+}
+.advance{
+    border: 5px solid #999999;
+    
+}
+.advance > div{
+    display: block;
+    padding: 5px;
+}
+.advance > div > span{
+    display: block;
+}
+
+.advance > div > span > span{
+    padding-right: 8px;
+}
+
