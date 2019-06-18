@@ -158,10 +158,12 @@ $(function() {
     let inputbox = "<input type='text' name='patient_num' class='patient_num' placeholder='测试框：输入病床号'/>";
     let httpbutton1 = "<button class=\"query\">测试按键：获取</button>";
     let httpbutton2 = "<button class=\"update\">测试按键：提交</button>";
-    $("body").prepend(inputbox,httpbutton1);
-    $("body").append(httpbutton2);
+    $(".secondcontent").before(inputbox,httpbutton1);
+    $(".secondcontent").after(httpbutton2);
+
+    let myhttp = new HttpRequest();
     $(".query").click(function(){
-        myhttp = new HttpRequest($(".patient_num").val().toString());
+        myhttp.setpatientnum($(".patient_num").val().toString());
         myhttp.queryrequest();
     });
     $(".update").click(function(){

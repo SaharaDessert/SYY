@@ -395,9 +395,9 @@ class ID1st2nd {
 
 /*********************http请求各个接口的对象 ***********************/
 class HttpRequest {
-    constructor(patient_num) {
+    constructor() {
         //发送请求的病人住院号，字符串
-        this.patient_num = patient_num;
+        this.patient_num = '';
         //接受请求全部数据
         this.data = {};
         //接受到的初始化的各个字段字符串
@@ -405,6 +405,10 @@ class HttpRequest {
         this.initidlist_lv2 = new Array();
         this.initidobj_lv3 = new Object();
         this.urlheader = 'http://192.168.2.100:8080';
+    }
+    setpatientnum(patient_num) {
+        this.patient_num = patient_num;
+        console.log(patient_num,typeof(patient_num));
     }
     queryrequest() {
         let that = this;
@@ -564,3 +568,4 @@ class HttpRequest {
         });
     }
 }
+
