@@ -59,7 +59,7 @@ let initadvancepage = function(name,obj) {
     $(".midcontent").prepend(content);
 }
 
-let initadvancepage2 = function(name,obj) {
+let initadvancepage2 = function(multichoose,name,obj) {
     // let header = "<h3>"+name+"问诊</h3><hr><div class=\"midcontent\"></div>";
     let content = "";
     // $(".advancedcontent").prepend(header);
@@ -70,15 +70,38 @@ let initadvancepage2 = function(name,obj) {
                     </div>";
     let index = 0;
     let id = 0;
-    for(let key in obj) {
-        index++;
-        let title = "<span>"+key+"：</span><span>";
-        for(let value of obj[key]) {
-            let option = "<span><input type=\"radio\" name=\""+name+"child"+index+"\" id=\""+name+id+"\"><label for=\""+name+(id++)+"\">"+value+"</label></span>";
-            title += option;
+    //如果该二级选项包含多选三级选项则需进一步判断，如果不包括，则可全部渲染单选框
+    if(multichoose.hasOwnProperty(name)) {
+        for(let key in obj) {
+            index++;
+            let title = "<span>"+key+"：</span><span>";
+            //如果包含在
+            if(multichoose[name].indexOf(key) > -1) {
+                for(let value of obj[key]) {
+                    let option = "<span><input type=\"checkbox\" name=\""+name+"child"+index+"\" id=\""+name+id+"\"><label for=\""+name+(id++)+"\">"+value+"</label></span>";
+                    title += option;
+                }
+            } else {
+                for(let value of obj[key]) {
+                    let option = "<span><input type=\"radio\" name=\""+name+"child"+index+"\" id=\""+name+id+"\"><label for=\""+name+(id++)+"\">"+value+"</label></span>";
+                    title += option;
+                }
+            }
+            content += ("</span><div>"+title+"</div>");
         }
-        content += ("</span><div>"+title+"</div>");
+
+    } else {
+        for(let key in obj) {
+            index++;
+            let title = "<span>"+key+"：</span><span>";
+            for(let value of obj[key]) {
+                let option = "<span><input type=\"radio\" name=\""+name+"child"+index+"\" id=\""+name+id+"\"><label for=\""+name+(id++)+"\">"+value+"</label></span>";
+                title += option;
+            }
+            content += ("</span><div>"+title+"</div>");
+        }
     }
+
     content += buttons;
     let contents = ("<div class=\""+name+" advance able\">"+content+"</div>");
     $("#"+name).parent().after(contents);
@@ -112,7 +135,7 @@ let empty = function(classobj,jqobj) {
 
 //一行系统 类
 class TableItems {
-    constructor(firstclass,secondclass,thirdclass) {
+    constructor(firstclass,secondclass,thirdclass,multichoose) {
         //一级字段名，如：'心血管'
         this.firstclass = firstclass;
         //二级字段列表，如：['胸痛','心悸']
@@ -120,6 +143,9 @@ class TableItems {
         //三级字段对象列表
         //[{'是否确诊冠心病':['否','二级医院','三级医院'],'病史':['&lt;1','1-5','5-10','&gt;10']},{'':['','',''],'':['','','']}]
         this.thirdclass = thirdclass;
+        //需多选的三级字段对象
+        //{'心悸':['生理性','病理性'],'高血压':['靶器官受损'],}
+        this.multichoose = multichoose;
     }
     //初始化一行视图
     initclassview() {
@@ -150,14 +176,16 @@ class TableItems {
         });
         //二级字段多选事件
         $("."+first+" .secondlevel input").click(function(){
-            if($(this).prop("checked") == true) {
-                //选中
-                check(that,$(this).next());
-            } else {
-                //取消
-                empty(that,$(this).next());
-            }
-            handlelist[index].updateidcfg();
+            //取消了二级字段input的true/false不同的点击事件
+            check(that,$(this).next());
+            // if($(this).prop("checked") == true) {
+            //     //选中
+            //     check(that,$(this).next());
+            // } else {
+            //     //取消
+            //     empty(that,$(this).next());
+            // }
+            // handlelist[index].updateidcfg();
         });
         //点击二级字段弹框三级事件
         $("."+first+" .secondlevel label").click(function(){
@@ -208,7 +236,7 @@ class TableItems {
         let firstindex = firstclasslist.indexOf(this.firstclass);
         let secondindex = this.secondclass.indexOf(secondname);
         //根据二级字段和其对应的三级字段对象，动态渲染弹框页面
-        initadvancepage2(secondname,this.thirdclass[secondindex]);
+        initadvancepage2(this.multichoose,secondname,this.thirdclass[secondindex]);
         $("label."+secondname).addClass("advanced");
         //配置弹框中三级字段单选
         thirdclassmatrix[firstindex][secondindex].loadidcfg();
@@ -241,17 +269,24 @@ class TableItems {
         }
     }
     //返回
-    //隐藏弹框，清除弹框中动态渲染的内容，取消按钮事件
+    //与保存事件相同
     btngoback(firstindex,secondindex) {
-        // hideadvance();
-        // clearadvancedcontent();
+        //hideadvance();
+        thirdclassmatrix[firstindex][secondindex].updateidcfg();
+        if(Number(thirdclassmatrix[firstindex][secondindex].queue) == 0) {
+            $("#"+this.secondclass[secondindex]).prop("checked",false);
+        } else {
+            $("#"+this.secondclass[secondindex]).prop("checked",true);
+        }
+        handlelist[firstindex].updateidcfg();
+        //clearadvancedcontent();
+        //$("button").unbind("click");
         $("."+this.secondclass[secondindex]+".advance").remove();
         $("."+this.secondclass[secondindex]).removeClass("advanced");
-        //$("button").unbind("click");
         console.log(thirdclassmatrix[firstindex][secondindex].queue);
     }
     //清除
-    //隐藏弹框，清除对应的三级字段id，对应二级字段选项checked false，更新二级字段id,清除弹框中动态渲染的内容，取消按钮事件
+    //清除对应的三级字段id，对应二级字段选项checked false，更新二级字段id
     btnclear(firstindex,secondindex) {
         //hideadvance();
         thirdclassmatrix[firstindex][secondindex].clearidcfg();
@@ -259,8 +294,8 @@ class TableItems {
         handlelist[firstindex].updateidcfg();
         //clearadvancedcontent();
         //$("button").unbind("click");
-        $("."+this.secondclass[secondindex]+".advance").remove();
-        $("."+this.secondclass[secondindex]).removeClass("advanced");
+        // $("."+this.secondclass[secondindex]+".advance").remove();
+        // $("."+this.secondclass[secondindex]).removeClass("advanced");
         console.log(thirdclassmatrix[firstindex][secondindex].queue);
     }
     //保存
@@ -415,6 +450,7 @@ class HttpRequest {
         let queryurl = this.urlheader + '/patient/findByPatientNumber';
         let httprequest = $.ajax({
             url: queryurl,
+            async:false,
             data: {
                 patient_number_lv1: this.patient_num,
             },
@@ -430,11 +466,19 @@ class HttpRequest {
                 that.initid_lv1 = data.lv1_binary;
                 //lv2_list
                 let initid_lv2 = data.lv2_binary;
-                let start = 0;
-                for(let index in handlelist) {
-                    let length = handlelist[index].queue.length;
-                    that.initidlist_lv2[index] = initid_lv2.substr(start,length);
-                    start = length;
+                //第一次问诊前为null，需初始化二级字段的id列表
+                if(initid_lv2 == null) {
+                    for(let index in handlelist) {
+                        let length = handlelist[index].queue.length;
+                        that.initidlist_lv2[index] = queue0(length);
+                    }
+                } else {
+                    let start = 0;
+                    for(let index in handlelist) {
+                        let length = handlelist[index].queue.length;
+                        that.initidlist_lv2[index] = initid_lv2.substr(start,length);
+                        start += length;
+                    }
                 }
                 //lv3_list
                 for(let index in data.patientLv2List) {
@@ -465,7 +509,7 @@ class HttpRequest {
     updaterequest() {
         //一二级字段更新请求
         this.updatelv1lv2();
-        //根据二三级字段变化判断三级字段需要：1.添加 2.更新 3.保持不变
+        //根据二三级字段变化判断三级字段需要：1.添加 2.更新 3.删除
         for(let index1 in handlelist) {
             for(let index2 in handlelist[index1].list) {
                 if(handlelist[index1].list[index2] == '1') {
@@ -494,6 +538,7 @@ class HttpRequest {
         let httprequest = $.ajax({
             url: updatelv1lv2url,
             type: "GET",
+            async: false,
             data: {
                 patient_number_lv1: this.patient_num,
                 lv1_binary: updatelv1_binary,
@@ -508,12 +553,14 @@ class HttpRequest {
         })
     }
     updatelv3(index1,index2) {
+        let that = this;
         let updatelv3url = this.urlheader + '/patient/updatePatientLv2';
         let updatelv3_binary = thirdclassmatrix[index1][index2].queue;
         let updaterepresent = thirdclassmatrix[index1][index2].name;
         let httprequest = $.ajax({
             url: updatelv3url,
             type: "GET",
+            async: false,
             data: {
                 patient_number_lv2: this.patient_num,
                 represent: updaterepresent,
@@ -524,16 +571,19 @@ class HttpRequest {
             success(data) {
                 //打印信息，可省略
                 console.log("更新病人三级表成功"+updaterepresent);
+                that.queryrequest();
             }
         });
     }
     addnewlv3(index1,index2) {
+        let that = this;
         let addnewlv3url = this.urlheader + '/patient/insertPatientLv2';
         let addnewlv3_binary = thirdclassmatrix[index1][index2].queue;
         let addnewrepresent = thirdclassmatrix[index1][index2].name;
         let httprequest = $.ajax({
             url: addnewlv3url,
             type: "GET",
+            async: false,
             data: {
                 patient_number_lv2: this.patient_num,
                 represent: addnewrepresent,
@@ -544,16 +594,18 @@ class HttpRequest {
             success(data) {
                 //打印信息，可省略
                 console.log("添加病人三级级表成功"+addnewrepresent);
+                that.queryrequest();
             }
-
         });
     }
     deletelv3(index1,index2) {
+        let that = this;
         let deletelv3url = this.urlheader + '/patient/deletePatientLv2';
         let deleterepresent = thirdclassmatrix[index1][index2].name;
         let httprequest = $.ajax({
             url: deletelv3url,
             type: "GET",
+            async: false,
             data: {
                 patient_number_lv2: this.patient_num,
                 represent: deleterepresent,
@@ -563,8 +615,8 @@ class HttpRequest {
             success(data) {
                 //打印信息，可省略
                 console.log("删除病人三级级表成功"+deleterepresent);
+                that.queryrequest();
             }
-
         });
     }
 }
