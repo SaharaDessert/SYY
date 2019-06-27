@@ -175,8 +175,13 @@ class TableItems {
             }
         });
         //二级字段多选事件
+        $("."+first+" .secondlevel > div").click(function(){
+            $(this).find("input").prop("checked",true);
+            check(that,$(this).find("label"));
+        });
         $("."+first+" .secondlevel input").click(function(){
             //取消了二级字段input的true/false不同的点击事件
+            $(this).prop("checked",true);
             check(that,$(this).next());
             // if($(this).prop("checked") == true) {
             //     //选中
@@ -189,7 +194,8 @@ class TableItems {
         });
         //点击二级字段弹框三级事件
         $("."+first+" .secondlevel label").click(function(){
-                    check(that,$(this));
+            $(this).prev().prop("checked",true);
+            check(that,$(this));
             }
         );
     }
