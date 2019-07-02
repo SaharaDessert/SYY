@@ -176,8 +176,7 @@ class TableItems {
         });
         //二级字段多选事件
         $("."+first+" .secondlevel > div").click(function(){
-            $(this).find("input").prop("checked",true);
-            check(that,$(this).find("label"));
+            $(this).find("input").trigger("click");
         });
         $("."+first+" .secondlevel input").click(function(){
             //取消了二级字段input的true/false不同的点击事件
@@ -194,10 +193,8 @@ class TableItems {
         });
         //点击二级字段弹框三级事件
         $("."+first+" .secondlevel label").click(function(){
-            $(this).prev().prop("checked",true);
-            check(that,$(this));
-            }
-        );
+            $(this).prev().trigger("click");
+        });
     }
     //初始化配置该行对应的二级字段id，以及其页面的样式
     initidcfg(classname,binary) {
