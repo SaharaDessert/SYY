@@ -230,9 +230,14 @@ for(let index in itemsclasslist) {
 }
 
 $(function() {
-    $("#test").hide();
+    // $("#test").hide();
+    // $("#test3").hide();
+    // $("#test2").hide();
     console.log("页面数据：" );console.log(a);
         $.magicBtn('#btnSection1',{
+            buttonType: 'material',
+        });
+        $.magicBtn('#btnSection2',{
             buttonType: 'material',
         });
         $("#button").hide();
@@ -248,20 +253,32 @@ $(function() {
                 clickBtn2 = 'true';
             }
         });
-    let inputbox = "<input type='text' name='patient_num' class='patient_num' placeholder='测试框：输入病床号'/>";
-    let httpbutton1 = "<button class=\"query\">测试按键：获取</button>";
-    let httpbutton2 = "<button class=\"update\">测试按键：提交</button>";
-    $(".secondcontent").before(inputbox,httpbutton1);
-    $(".secondcontent").after(httpbutton2);
+        $('#button2').click(function(){
+            if(clickBtn3 == 'true') {
+                 myhttp.updaterequest();
+                clickBtn3 = 'false';
+            };
+    
+            if(clickBtn4 == 'true') {
+                clickBtn4 = 'false';
+            } else {
+                clickBtn4 = 'true';
+            }
+        });
+    // let inputbox = "<input type='text' name='patient_num' class='patient_num' placeholder='测试框：输入病床号'/>";
+    // let httpbutton1 = "<button class=\"query\">测试按键：获取</button>";
+    // let httpbutton2 = "<button class=\"update\">测试按键：提交</button>";
+    // $(".secondcontent").before(inputbox,httpbutton1);
+    // $(".secondcontent").after(httpbutton2);
 
     let myhttp = new HttpRequest();
     $(".query").click(function(){
         myhttp.setpatientnum($(".patient_num").val().toString());
         myhttp.queryrequest();
     });
-    $(".update").click(function(){
-        myhttp.updaterequest();
-    });
+    // $(".update").click(function(){
+    //     myhttp.updaterequest();
+    // });
 
     //渲染输入的多个整行对象
     for(tr of itemsclasslist) {

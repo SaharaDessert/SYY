@@ -26,7 +26,7 @@
         <link rel="stylesheet" type="text/css" href="src/pretty.min.css">
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/main.css">
-        <!-- 测试模组结束 -->
+       <!-- 测试模组结束 --> 
         <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="./modernizr.js"></script>
         <script type="text/javascript">
@@ -42,7 +42,13 @@
                         align="center" /></h1>
         <br>
         <h2 align="center" style="font-family:华文新魏;font-weight:900;">无痛麻醉前会诊&评估单</h2>
-        <table border="4" cellspacing="2" , width="1350" style="margin: auto;" cellpadding="5">
+        <div id="query" align="center">
+                <input type="text" name="patient_num" class="patient_num" placeholder="测试框：输入病床号">
+                <button class="query">测试按键：获取</button>
+               
+        </div>
+        <div id='test'>
+                <table border="4" cellspacing="2" , width="1350" style="margin: auto;" cellpadding="5">
 
                 <tr>
                         <td width="371" height="90" bgcolor="#FFD39B" class="font1">&nbsp;&nbsp;姓名：&nbsp;&nbsp;<font
@@ -115,12 +121,14 @@
                 </tr>
                 　　
         </table>
+
         <!-- 第二块内容 -->
         <br>
 
 
         </table>
-
+</div>
+<div id='test2'>
         <div class="secondcontent">
                 <table bgcolor="#CAE1FF" class="center">
                         <tr class="header">
@@ -130,9 +138,23 @@
                         </tr>
                 </table>
         </div>
-</body>
+        <div align="center">
+        <table bgcolor="#B0C4DE" cellspacing="1" width="1350" style="margin: auto;" cellpadding="1" frame=hsides>
+                <tr>
+                        <div id="btnSection2" align="center">
+                                <div class="col-md-4 col-lg-4 col-sm-4">
+                                        <div class="button-container border-right">
+                                                <button id="button2" class="magicBtn">此按钮用于一次上传</button>
+                                        </div> <!-- /.button-container -->
+                                </div>
+                        </div>
+                </tr>
+        </table>
+</div>
+</div>
 
 
+<div id='test3'>
 <table bgcolor="#B2DFEE" cellspacing="0" border="1" width="1350" style="margin: auto;" cellpadding="0">
         <tr height="45">
                 <td width="103.84" class="font1" align="center">&nbsp;&nbsp;Na</td>
@@ -327,6 +349,7 @@
                 <td>&nbsp;&nbsp;日</td>
         </tr>
 </table>
+</div>
 <div class="content">
 
 

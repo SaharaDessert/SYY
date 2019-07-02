@@ -1,6 +1,8 @@
 //按钮状态位
-clickBtn2 = 'true';
 clickBtn1 = 'true';
+clickBtn2 = 'true';
+clickBtn3 = 'true';
+clickBtn4 = 'true';
 //本地预存变量
 a={
     "patient_number_lv1":null,
@@ -628,7 +630,11 @@ class HttpRequest {
                 console.log("获取初始信息成功");
                 //第一部分操作
                 window.a=data;
-                console.log("本地信息暂存为"+window.a); 
+                $("#test").show();
+                $("#test2").show();
+                $("#test3").show();
+                $("#query").hide();
+                console.log("本地信息暂存为"+a); 
                 $("#name").append(a.name)
                 $("p").css("align","right");
                 $("#name").css("white-space","nowrap");
@@ -661,7 +667,10 @@ class HttpRequest {
                 $("#assume").append(a.assume);
                 $("#chief_complaint").append(a.chief_complaint);
                 $("#others").append(a.others);
-                var b = a.result_binary;
+                var b = data.result_binary;
+                if(a.result_binary==null){ 
+                    b='00000000000000000000000'
+                };
                 console.log(b);
                 var c = b.toString();
                 console.log(typeof (c));
@@ -757,6 +766,16 @@ class HttpRequest {
             success(data) {
                 //打印信息，可省略
                 console.log("更新病人一二级表成功");
+                $('#button2').resultLoading({
+                    status: 'success'
+                });
+                clickBtn3 = 'true';
+            },
+            error(){
+                console.log("传输失败");
+                $('#button2').resultLoading({
+                    status: 'error'
+                });clickBtn3 = 'true';
             }
         })
     }
