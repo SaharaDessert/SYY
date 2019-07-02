@@ -1,3 +1,162 @@
+//按钮状态位
+clickBtn2 = 'true';
+clickBtn1 = 'true';
+//本地预存变量
+a={
+    "patient_number_lv1":null,
+    "name": null,
+    "department": null,
+    "bed_number": null,
+    "age": null,
+    "gender": null,
+    "height": null,
+    "weight": null,
+    "sbp": null,
+    "dbp": null,
+    "r": null,
+    "p": null,
+    "t": null,
+    "na": null,
+    "k": null,
+    "cl": null,
+    "wbc": null,
+    "hb": null,
+    "plts": null,
+    "pt": null,
+    "aptt": null,
+    "bun": null,
+    "creat": null,
+    "tbil": null,
+    "ast": null,
+    "alt": null,
+    "glu": null,
+    "result_binary": null,
+    "lv1_binary": null,
+    "lv2_binary": null,
+    "firstAssessDoc": null,
+    "firstAssessDate": null,
+    "secondAssessDoc": null,
+    "secondAssessDate": null,
+    "pre_diagnose": null,
+    "assume": null,
+    "chief_complaint": null,
+    "patientLv2List": [
+        {
+            "patient_number_lv2": "201721010715",
+            "checkbox_binary": "10100100",
+            "remark": null,
+            "represent": "阻塞性呼吸睡眠暂停低通气综合征"
+        },
+        {
+            "patient_number_lv2": "201721010715",
+            "checkbox_binary": "10001000",
+            "remark": null,
+            "represent": "心肌病"
+        },
+        {
+            "patient_number_lv2": "201721010715",
+            "checkbox_binary": "0000000000",
+            "remark": null,
+            "represent": "吸烟，戒烟"
+        },
+        {
+            "patient_number_lv2": "201721010715",
+            "checkbox_binary": "00000000000000010000000000000",
+            "remark": null,
+            "represent": "胸痛，胸闷"
+        },
+        {
+            "patient_number_lv2": "201721010715",
+            "checkbox_binary": "000000010000000",
+            "remark": null,
+            "represent": "心悸"
+        }
+    ]
+};
+function Initresult(result_binary){
+    var result_binary1=result_binary.substring(0,6);
+    $(":radio[name='ASA'][value="+result_binary1+"]").prop("checked", "checked");
+    console.log(result_binary1);
+    var result_binary2=result_binary.substring(6,8);
+    $(":radio[name='饱胃'][value="+result_binary2+"]").prop("checked", "checked");
+    console.log(result_binary2);
+    var result_binary3=result_binary.substring(8,11);
+    $(":radio[name='讨论1'][value="+result_binary3+"]").prop("checked", "checked");
+    console.log(result_binary3);
+    var result_binary4=result_binary.substring(11,13);
+    $(":radio[name='麻醉准备'][value="+result_binary4+"]").prop("checked", "checked");
+    console.log(result_binary4);
+    var result_binary5=result_binary.substring(13,17);
+    $(":radio[name='风险'][value="+result_binary5+"]").prop("checked", "checked");
+    console.log(result_binary5);
+    var result_binary6=result_binary.substring(17,20);
+    $(":radio[name='麻醉'][value="+result_binary6+"]").prop("checked", "checked");
+    console.log(result_binary6);
+    var result_binary7=result_binary.substring(20,22);
+    $(":radio[name='变更麻醉方法'][value="+result_binary7+"]").prop("checked", "checked");
+    console.log(result_binary7);
+}
+var secondclick= function load(){
+    var AA=$("input[name='ASA']:checked").val();
+    var BB=$("input[name='饱胃']:checked").val();
+    var CC=$("input[name='讨论1']:checked").val();
+    var DD=$("input[name='麻醉准备']:checked").val();
+    var EE=$("input[name='风险']:checked").val();
+    var FF=$("input[name='麻醉']:checked").val();
+    var GG=$("input[name='变更麻醉方法']:checked").val();
+
+    if(AA==undefined){
+        AA="000000";};
+    if(BB==undefined){
+        BB="00";};
+    if(CC==undefined){
+        CC="000";};
+    if(DD==undefined){
+        DD="00";};
+    if(EE==undefined){
+        EE="0000";};
+    if(FF==undefined){
+        FF="000";};
+    if(GG==undefined){
+        GG="00";};
+    choosen=AA+BB+CC+DD+EE+FF+GG;
+ 
+    return choosen;
+}
+let submit2=function submit2() {
+    this.secondclick();
+    C=$(".patient_num").val().toString()
+    console.log(C);
+    console.log(choosen);
+    $('#button').startLoading({
+        loadingIcon: false
+    });
+    $.ajax({
+        url:'http://syyaoao.ngrok.ibanzhuan.cn/patient/updatePatientLv1',
+        type:"GET", 
+        data: {
+            patient_number_lv1: C,
+           result_binary:choosen,
+        },
+        dataType: 'jsonp',
+        jsonp: 'jsoncallback',
+        jsonpCallback:"subtest",   
+        success() {
+            console.log("传输成功");
+            $('#button').resultLoading({
+                status: 'success'
+            });
+            clickBtn1 = 'true';
+        },
+        error(){
+            console.log("传输失败");
+            $('#button').resultLoading({
+                status: 'error'
+            });clickBtn1 = 'true';
+        }
+    });
+    
+}
 //一行总输入模板
 let initfirstmode = function(){
     let trmode = "\
@@ -445,7 +604,7 @@ class HttpRequest {
         this.initid_lv1 = '';
         this.initidlist_lv2 = new Array();
         this.initidobj_lv3 = new Object();
-        this.urlheader = 'http://192.168.2.100:8080';
+        this.urlheader = 'http://syyaoao.ngrok.ibanzhuan.cn';
     }
     setpatientnum(patient_num) {
         this.patient_num = patient_num;
@@ -462,9 +621,52 @@ class HttpRequest {
             },
             dataType:"jsonp",
             jsonp: "jsoncallback",
+            jsonpCallback:"test",
+            timeout:3000, 
             success: function(data) {
                 //打印信息，可省略
-                console.log("查询病人一二级表成功");
+                console.log("获取初始信息成功");
+                //第一部分操作
+                window.a=data;
+                console.log("本地信息暂存为"+window.a); 
+                $("#name").append(a.name)
+                $("p").css("align","right");
+                $("#name").css("white-space","nowrap");
+                $("#height").append(a.height);
+                $("#patient_number_lv1").append(a.patient_number_lv1);
+                $("#department").append(a.department);
+                $("#bed_number").append(a.bed_number);
+                $("#age").append(a.age);
+                $("#gender").append(a.gender);
+                $("#weight").append(a.weight);
+                $("#bp").append(a.sbp).append("/").append(a.dbp);
+                $("#r").append(a.r);
+                $("#p").append(a.p);
+                $("#t").append(a.t);
+                $("#na").append(a.na);
+                $("#k").append(a.k);
+                $("#cl").append(a.cl);
+                $("#wbc").append(a.wbc);
+                $("#hb").append(a.hb);
+                $("#plts").append(a.plts);
+                $("#pt").append(a.pt);
+                $("#aptt").append(a.aptt);
+                $("#bun").append(a.bun);
+                $("#creat").append(a.creat);
+                $("#tbil").append(a.tbil);
+                $("#ast").append(a.ast);
+                $("#alt").append(a.alt);
+                $("#glu").append(a.glu);
+                $("#pre_diagnose").append(a.pre_diagnose);
+                $("#assume").append(a.assume);
+                $("#chief_complaint").append(a.chief_complaint);
+                $("#others").append(a.others);
+                var b = a.result_binary;
+                console.log(b);
+                var c = b.toString();
+                console.log(typeof (c));
+                window.Initresult(c);
+                $("#button").show();
                 let result = JSON.stringify(data);
                 console.log(result);
                 that.data = data;

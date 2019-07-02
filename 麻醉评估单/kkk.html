@@ -1,6 +1,7 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -8,318 +9,355 @@
         <link rel="stylesheet" href="./demo.css">
         <!-- 测试模组开始 -->
         <link rel="stylesheet" type="text/css" href="css/normalize.css" />
-	<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
-	<link rel="stylesheet" href="css/highlight-9.5.0.min.css">
-	<link rel="stylesheet" href="dist/css/checkbix.min.css">
+        <link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+        <link rel="stylesheet" href="css/highlight-9.5.0.min.css">
+        <link rel="stylesheet" href="dist/css/checkbix.min.css">
         <link rel="stylesheet" href="demo/demo.css">
         <link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-	<link async rel="stylesheet" href="https://cdn.materialdesignicons.com/1.8.36/css/materialdesignicons.min.css"/>
-	<link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"/>
-	<link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.7/typicons.min.css"/>
-	  <link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"/>
-	<link  href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
-	<link rel="stylesheet" type="text/css" href="src/pretty.min.css"> 
+        <link async rel="stylesheet"
+                href="https://cdn.materialdesignicons.com/1.8.36/css/materialdesignicons.min.css" />
+        <link async rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" />
+        <link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.7/typicons.min.css" />
+        <link async rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+        <link rel="stylesheet" type="text/css" href="src/pretty.min.css">
+        <link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/main.css">
         <!-- 测试模组结束 -->
         <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="./modernizr.js"></script>
         <script type="text/javascript">
-           
         </script>
-    </head>
+</head>
 
 
-    <body style="background: white;">
-<!-- 第一块内容 -->
+<body style="background: white;">
+        <!-- 第一块内容 -->
 
-        <input type="button" value="此按钮用于传输测试:ajaxtest" onclick="ajaxtest()"/>
-            <h1  align="center" style="font-family:华文楷体;font-weight:900;"><img src="./icon.png" alt="icon" width="40%" align="center"/></h1>
-            <br>
-            <h2 align="center" style="font-family:华文新魏;font-weight:900;">无痛麻醉前会诊&评估单</h2>
-        <table border="4" cellspacing="2" , width="1350"  style="margin: auto;" cellpadding="5">
 
-                <tr >
-                <td width="371" height="90" bgcolor="#FFD39B" class="font1" >&nbsp;&nbsp;姓名：&nbsp;&nbsp;<font class="name" id='name' ></font></td>
-                <td width="396"bgcolor="#FFD39B" height="90">
-                    <table  style="margin: auto;" cellspacing="0" bgcolor="transparent" width="396" height="90">
-                            <tr  height="45">
-                                    <td class="font1" width="203" id="department">&nbsp;&nbsp;科室：&nbsp;&nbsp;</td>
-                                    <td class="font1" id="bed_number">&nbsp;&nbsp;床号:&nbsp;&nbsp;</td>
-                                    </tr>
-                            <tr  height="45">
-                                    <td  colspan=2 class="font1" id="patient_number_lv1"> &nbsp;&nbsp;住院号:&nbsp;&nbsp;</td>
-                                    
-                                    </tr>
-                    </table>
-                </td>
-                <td bgcolor="#FFD39B" class="font1" id="pre_diagnose" width="583">&nbsp;&nbsp;术前诊断：&nbsp;&nbsp;</td>
-                </tr>
+        <h1 align="center" style="font-family:华文楷体;font-weight:900;"><img src="./icon.png" alt="icon" width="40%"
+                        align="center" /></h1>
+        <br>
+        <h2 align="center" style="font-family:华文新魏;font-weight:900;">无痛麻醉前会诊&评估单</h2>
+        <table border="4" cellspacing="2" , width="1350" style="margin: auto;" cellpadding="5">
 
-                <tr  >
-                <td bgcolor="#FFEC8B" width="371" >
-                        <table  style="margin: auto;" cellspacing="1" ,  width="371" height="50">
-                                <tr >
-                                        <td class="font1"width="231" id='age'>&nbsp;&nbsp;年龄：&nbsp;&nbsp;</td>
-                                        <td class="font1"width="140" id='gender'>&nbsp;&nbsp;性别：&nbsp;&nbsp;</td>
+                <tr>
+                        <td width="371" height="90" bgcolor="#FFD39B" class="font1">&nbsp;&nbsp;姓名：&nbsp;&nbsp;<font
+                                        class="name" id='name'></font>
+                        </td>
+                        <td width="396" bgcolor="#FFD39B" height="90">
+                                <table style="margin: auto;" cellspacing="0" bgcolor="transparent" width="396"
+                                        height="90">
+                                        <tr height="45">
+                                                <td class="font1" width="203" id="department">
+                                                        &nbsp;&nbsp;科室：&nbsp;&nbsp;</td>
+                                                <td class="font1" id="bed_number">&nbsp;&nbsp;床号:&nbsp;&nbsp;</td>
                                         </tr>
-                        </table>
-                </td>
-                <td bgcolor="#FFEC8B" width="396">
-                        <table  style="margin: auto;" cellspacing="1" ,  width="396" height="50">
-                                <tr >
-                                        <td class="font1"width="200" id="height">&nbsp;&nbsp;身高：&nbsp;&nbsp;</td>
-                                        <td class="font1"id='weight'>&nbsp;&nbsp;体重&nbsp;&nbsp;</td>
+                                        <tr height="45">
+                                                <td colspan=2 class="font1" id="patient_number_lv1">
+                                                        &nbsp;&nbsp;住院号:&nbsp;&nbsp;</td>
+
                                         </tr>
-                        </table>
-                </td>
-                <td bgcolor="#FFEC8B" class="font1" id="assume" rowspan="2">&nbsp;&nbsp;拟施操作：&nbsp;&nbsp;</td>
-   
+                                </table>
+                        </td>
+                        <td bgcolor="#FFD39B" class="font1" id="pre_diagnose" width="583">&nbsp;&nbsp;术前诊断：&nbsp;&nbsp;
+                        </td>
                 </tr>
 
-                <tr >
-                <td bgcolor="#FFEC8B" class="font1" id="chief_complaint"colspan="2"height="45">&nbsp;&nbsp;主诉：&nbsp;&nbsp;</td>
+                <tr>
+                        <td bgcolor="#FFEC8B" width="371">
+                                <table style="margin: auto;" cellspacing="1" , width="371" height="50">
+                                        <tr>
+                                                <td class="font1" width="231" id='age'>&nbsp;&nbsp;年龄：&nbsp;&nbsp;</td>
+                                                <td class="font1" width="140" id='gender'>&nbsp;&nbsp;性别：&nbsp;&nbsp;
+                                                </td>
+                                        </tr>
+                                </table>
+                        </td>
+                        <td bgcolor="#FFEC8B" width="396">
+                                <table style="margin: auto;" cellspacing="1" , width="396" height="50">
+                                        <tr>
+                                                <td class="font1" width="200" id="height">&nbsp;&nbsp;身高：&nbsp;&nbsp;
+                                                </td>
+                                                <td class="font1" id='weight'>&nbsp;&nbsp;体重&nbsp;&nbsp;</td>
+                                        </tr>
+                                </table>
+                        </td>
+                        <td bgcolor="#FFEC8B" class="font1" id="assume" rowspan="2">&nbsp;&nbsp;拟施操作：&nbsp;&nbsp;</td>
+
                 </tr>
-                <tr >
-                        <td  bgcolor="#C1FFC1" width="371">
-                                <table  style="margin: auto;" cellspacing="1" , width="371" height="50">
-                                        <tr >
-                                                <td class="font1"width="231" id="bp">&nbsp;&nbsp;BP:&nbsp;&nbsp;</td>
-                                                <td class="font1"width="140" id="r">&nbsp;&nbsp;R&nbsp;&nbsp;</td>
-                                                </tr>
+
+                <tr>
+                        <td bgcolor="#FFEC8B" class="font1" id="chief_complaint" colspan="2" height="45">
+                                &nbsp;&nbsp;主诉：&nbsp;&nbsp;</td>
+                </tr>
+                <tr>
+                        <td bgcolor="#C1FFC1" width="371">
+                                <table style="margin: auto;" cellspacing="1" , width="371" height="50">
+                                        <tr>
+                                                <td class="font1" width="231" id="bp">&nbsp;&nbsp;BP:&nbsp;&nbsp;</td>
+                                                <td class="font1" width="140" id="r">&nbsp;&nbsp;R&nbsp;&nbsp;</td>
+                                        </tr>
                                 </table>
                         </td>
                         <td bgcolor="#C1FFC1" width="396">
-                                <table  style="margin: auto;" cellspacing="1" , width="396"  height="50">
-                                        <tr >
-                                                <td class="font1"width="200" id="p">&nbsp;&nbsp;P:&nbsp;&nbsp;</td>
-                                                <td class="font1"id="t">&nbsp;&nbsp;T:&nbsp;&nbsp;</td>
-                                                </tr>
+                                <table style="margin: auto;" cellspacing="1" , width="396" height="50">
+                                        <tr>
+                                                <td class="font1" width="200" id="p">&nbsp;&nbsp;P:&nbsp;&nbsp;</td>
+                                                <td class="font1" id="t">&nbsp;&nbsp;T:&nbsp;&nbsp;</td>
+                                        </tr>
                                 </table>
                         </td>
                         <td bgcolor="#C1FFC1" id="others" class="font1">&nbsp;&nbsp;其他：&nbsp;&nbsp;</td>
                 </tr>
                 　　
-            </table>
-<!-- 第二块内容 -->
+        </table>
+        <!-- 第二块内容 -->
+        <br>
+
+
+        </table>
+
+        <div class="secondcontent">
+                <table bgcolor="#CAE1FF" class="center">
+                        <tr class="header">
+                                <th class="header1">系统情况</th>
+                                <th class="header2">现在情况</th>
+                                <th class="heafer3">禁忌症注意</th>
+                        </tr>
+                </table>
+        </div>
+</body>
+
+
+<table bgcolor="#B2DFEE" cellspacing="0" border="1" width="1350" style="margin: auto;" cellpadding="0">
+        <tr height="45">
+                <td width="103.84" class="font1" align="center">&nbsp;&nbsp;Na</td>
+                <td width="103.84" class="font1" align="center">&nbsp;&nbsp;K</td>
+                <td width="103.84" class="font1" align="center">&nbsp;&nbsp;Cl</td>
+                <td width="103.84" class="font1" align="center">&nbsp;&nbsp;WBC</td>
+                <td width="103.84" class="font1" align="center">&nbsp;&nbsp;HB/HCT</td>
+                <td width="103.84" class="font1" align="center">&nbsp;&nbsp;PLTS</td>
+                <td width="103.84" class="font1" align="center">&nbsp;&nbsp;PT</td>
+                <td width="103.84" class="font1" align="center">&nbsp;&nbsp;APTT</td>
+                <td width="103.84" class="font1" align="center">&nbsp;&nbsp;BUN</td>
+                <td width="103.84" class="font1" align="center">&nbsp;&nbsp;Creat</td>
+                <td width="103.84" class="font1" align="center">&nbsp;&nbsp;CO2</td>
+                <td width="103.84" class="font1" align="center">&nbsp;&nbsp;肝功</td>
+                <td width="103.84" class="font1" align="center">&nbsp;&nbsp;血糖</td>
+        </tr>
+        <tr height="45">
+                <td width="103.84" style="font-family:Stencil;font-size: 20px;" align="center" id="na"></td>
+                <td width="103.84" style="font-family:Stencil;font-size: 20px;" align="center" id="k"></td>
+                <td width="103.84" style="font-family:Stencil;font-size: 20px;" align="center" id="cl"></td>
+                <td width="103.84" style="font-family:Stencil;font-size: 20px;" align="center" id="wbc"></td>
+                <td width="103.84" style="font-family:Stencil;font-size: 20px;" align="center" id="hb"></td>
+                <td width="103.84" style="font-family:Stencil;font-size: 20px;" align="center" id="plts"></td>
+                <td width="103.84" style="font-family:Stencil;font-size: 20px;" align="center" id="pt"></td>
+                <td width="103.84" style="font-family:Stencil;font-size: 20px;" align="center" id="aptt"></td>
+                <td width="103.84" style="font-family:Stencil;font-size: 20px;" align="center" id="bun"></td>
+                <td width="103.84" style="font-family:Stencil;font-size: 20px;" align="center" id="creat"></td>
+                <td width="103.84" style="font-family:Stencil;font-size: 20px;" align="center" id="tbil"></td>
+                <td width="103.84" style="font-family:Stencil;font-size: 20px;" align="center" id="ast"></td>
+                <td width="103.84" style="font-family:Stencil;font-size: 20px;" align="center" id="alt"></td>
+        </tr>
+</table>
+<!-- 第三块内容 -->
+<table bgcolor="#B2DFEE" cellspacing="0" border="1" width="1350" style="margin: auto;" cellpadding="1">
+        <tr height="45">
+                <td align="center">&nbsp;&nbsp;<b>综合评估：</b> </td>
+                <td align="center">&nbsp;&nbsp;麻醉风险评估&nbsp;&nbsp;(ASA分级):
+                        &nbsp;&nbsp; <div class="pretty success">
+                                <input type="radio" name="ASA" value="100000">
+                                <label><i class="default"></i>1</label>
+                        </div>
+                        &nbsp;&nbsp;<div class="pretty info">
+                                <input type="radio" name="ASA" value="010000">
+                                <label><i class="default"></i> 2</label>
+                        </div>
+                        &nbsp;&nbsp; <div class="pretty warning">
+                                <input type="radio" name="ASA" value="001000">
+                                <label><i class="default"></i> 3</label>
+                        </div>
+                        &nbsp;&nbsp; <div class="pretty danger">
+                                <input type="radio" name="ASA" value="000100">
+                                <label><i class="default"></i>4</label>
+                        </div>
+                        &nbsp;&nbsp;<div class="pretty danger">
+                                <input type="radio" name="ASA" value="000010">
+                                <label><i class="default"></i> 5</label>
+                        </div>
+                        &nbsp;&nbsp;<div class="pretty danger">
+                                <input type="radio" name="ASA" value="000001">
+                                <label><i class="default"></i> E</label>
+                        </div>
+                </td>
+
+                <td align="center">&nbsp;&nbsp;<b>是否饱胃？</b> </td>
+                <td align="center">
+                        <div class="pretty warning">
+                                <input type="radio" name="饱胃" value="10">
+                                <label><i class="default"></i> 是</label>
+                        </div>
+                        <div class="pretty success">
+                                <input type="radio" name="饱胃" value="01">
+                                <label><i class="default"></i> 否</label>
+                        </div>
+                </td>
+
+        </tr>
+</table>
 <br>
-
-
+<br>
+<table cellspacing="0" width="1350" style="margin: auto;" cellpadding="1">
+        <tr height="45">
+                <td>&nbsp;&nbsp;<b>术前讨论：</b></td>
+        </tr>
 </table>
 
- <div class="secondcontent">
-        <table bgcolor="#CAE1FF"  class="center">
-            <tr class="header">
-                <th class="header1">系统情况</th>
-                <th class="header2">现在情况</th>
-                <th class="heafer3">禁忌症注意</th>      
-            </tr>
-        </table>
-    </div>
-                </body>
-   
-       
-    <table bgcolor="#B2DFEE" cellspacing="0" border="1"  width="1350"  style="margin: auto;" cellpadding="0">
-            <tr  height="45">
-                    <td width="103.84"class="font1"align="center">&nbsp;&nbsp;Na</td>
-                    <td width="103.84"class="font1"align="center">&nbsp;&nbsp;K</td>
-                    <td width="103.84"class="font1"align="center">&nbsp;&nbsp;Cl</td>
-                    <td width="103.84"class="font1"align="center">&nbsp;&nbsp;WBC</td>
-                    <td width="103.84"class="font1"align="center">&nbsp;&nbsp;HB/HCT</td>
-                    <td width="103.84"class="font1"align="center">&nbsp;&nbsp;PLTS</td>
-                    <td width="103.84"class="font1"align="center">&nbsp;&nbsp;PT</td>
-                    <td width="103.84"class="font1"align="center">&nbsp;&nbsp;APTT</td>
-                    <td width="103.84"class="font1"align="center">&nbsp;&nbsp;BUN</td>
-                    <td width="103.84"class="font1"align="center">&nbsp;&nbsp;Creat</td>
-                    <td width="103.84"class="font1"align="center">&nbsp;&nbsp;CO2</td>
-                    <td width="103.84"class="font1"align="center">&nbsp;&nbsp;肝功</td>
-                    <td width="103.84"class="font1"align="center">&nbsp;&nbsp;血糖</td>
-                </tr>
-                <tr  height="45">
-                        <td width="103.84" style="font-family:Stencil;font-size: 20px;"align="center"id="na"></td>
-                        <td width="103.84" style="font-family:Stencil;font-size: 20px;"align="center"id="k"></td>
-                        <td width="103.84" style="font-family:Stencil;font-size: 20px;"align="center"id="cl"></td>
-                        <td width="103.84" style="font-family:Stencil;font-size: 20px;"align="center"id="wbc"></td>
-                        <td width="103.84" style="font-family:Stencil;font-size: 20px;"align="center"id="hb"></td>
-                        <td width="103.84" style="font-family:Stencil;font-size: 20px;"align="center"id="plts"></td>
-                        <td width="103.84" style="font-family:Stencil;font-size: 20px;"align="center"id="pt"></td>
-                        <td width="103.84" style="font-family:Stencil;font-size: 20px;"align="center"id="aptt"></td>
-                        <td width="103.84" style="font-family:Stencil;font-size: 20px;"align="center"id="bun"></td>
-                        <td width="103.84" style="font-family:Stencil;font-size: 20px;"align="center"id="creat"></td>
-                        <td width="103.84" style="font-family:Stencil;font-size: 20px;"align="center"id="tbil"></td>
-                        <td width="103.84" style="font-family:Stencil;font-size: 20px;"align="center"id="ast"></td>
-                        <td width="103.84" style="font-family:Stencil;font-size: 20px;"align="center"id="alt"></td>
-                    </tr>
-    </table>
-<!-- 第三块内容 -->
-    <table bgcolor="#B2DFEE" cellspacing="0" border="1"   width="1350"  style="margin: auto;" cellpadding="1">
-            <tr  height="45">
-                    <td >&nbsp;&nbsp;综合评估：</td>
-                    <td >&nbsp;&nbsp;麻醉风险评估(ASA分级):
-                    &nbsp;&nbsp; <div class="pretty success">
-                        <input type="radio" name="radio18"> 
-                        <label><i class="default"></i>1</label>
-                      </div>
-                      <div class="pretty success">
-                        <input type="radio" name="radio18"> 
-                        <label><i class="default"></i> 2</label>
-                      </div>
-                      <div class="pretty info">
-                        <input type="radio" name="radio18"> 
-                        <label><i class="default"></i> 3</label>
-                      </div>
-                      <div class="pretty warning">
-                        <input type="radio" name="radio18"> 
-                        <label><i class="default"></i>4</label>
-                      </div>
-                      <div class="pretty danger">
-                        <input type="radio" name="radio18"> 
-                        <label><i class="default"></i> 5</label>
-                      </div>
-                      <div class="pretty danger">
-                        <input type="radio" name="radio18"> 
-                        <label><i class="default"></i> E</label>
-                      </div></td>
-                    
-                    <td >&nbsp;&nbsp;是否饱胃？</td>
-                    <td ><div class="pretty warning">
-                        <input type="radio" name="饱胃"> 
-                        <label><i class="default"></i> 是</label>
-                      </div> <div class="pretty success">
-                        <input type="radio" name="饱胃"> 
-                        <label><i class="default"></i> 否</label>
-                      </div></td>
-                  
-                </tr>
-        </table>
-        <br>
-        <br>
-        <table cellspacing="0"   width="1350"  style="margin: auto;" cellpadding="1">
-                        <tr  height="45">
-                                <td >&nbsp;&nbsp;术前讨论：</td> 
-                        </tr>
-        </table>
-
-         <table   bgcolor="#E6E6FA"  cellspacing="0" border="1"   width="1350"  style="margin: auto;" cellpadding="1">
-                <tr  height="45">
-                        <td >&nbsp;&nbsp;经与本专业医师讨论</td>
-                        <td >&nbsp;&nbsp;<div class="pretty inline">
-                                <input type="radio" name="讨论1"> 
+<table bgcolor="#E6E6FA" cellspacing="0" border="1" width="1350" style="margin: auto;" cellpadding="1">
+        <tr height="45">
+                <td>&nbsp;&nbsp;经与本专业医师讨论</td>
+                <td>&nbsp;&nbsp;<div class="pretty inline">
+                                <input type="radio" name="讨论1" value="100">
                                 <label><i class="mdi mdi-check"></i> 按计划安排检查手术</label>
-                              </div>
-                              <div class="pretty inline">
-                                <input type="radio" name="讨论1"> 
+                        </div>
+                        <div class="pretty inline">
+                                <input type="radio" name="讨论1" value="010">
                                 <label><i class="mdi mdi-check"></i> 不适合全麻下检查</label>
-                              </div>
-                              <div class="pretty inline">
-                                <input type="radio" name="讨论1"> 
-                                <label><i class="mdi mdi-check"></i> 继续术前手术，另期安排检查手术</label>
-                              </div>
-                        </td>
-                        
-                    </tr>
-                    <tr  height="45">
-                        <td >&nbsp;&nbsp;麻醉准备</td>
-                        <td >&nbsp;&nbsp;<div class="pretty inline">
-                                <input type="radio" name="麻醉准备"> 
+                        </div>
+                        <div class="pretty inline">
+                                <input type="radio" name="讨论1" value="001">
+                                <label><i class="mdi mdi-check"></i> 继续术前准备，另期安排检查手术</label>
+                        </div>
+                </td>
+
+        </tr>
+        <tr height="45">
+                <td>&nbsp;&nbsp;麻醉准备</td>
+                <td>&nbsp;&nbsp;<div class="pretty inline">
+                                <input type="radio" name="麻醉准备" value="10">
                                 <label><i class="mdi mdi-check"></i> 按麻醉计划常规</label>
-                              </div>
-                              <div class="pretty inline">
-                                        <input type="radio" name="麻醉准备"> 
-                                        <label><i class="mdi mdi-check"></i> 需特殊准备：专科会诊治疗</label>
-                                      </div>
-                      
-                    </tr>
-                    <tr height="45">
-                                <td >&nbsp;&nbsp;风险防范措施</td>
-                                <td >&nbsp;&nbsp;<div class="pretty inline">
-                                                <input type="radio" name="风险"> 
-                                                <label><i class="mdi mdi-check"></i> 抢救药品</label>
-                                              </div>
-                                      <div class="pretty inline">
-                                                        <input type="radio" name="风险"> 
-                                                        <label><i class="mdi mdi-check"></i> 有创监测</label>
-                                                      </div>
-                                                      <div class="pretty inline">
-                                                                <input type="radio" name="风险"> 
-                                                                <label><i class="mdi mdi-check"></i> 大静脉通道</label>
-                                                              </div>
-                                                              <div class="pretty inline">
-                                                                        <input type="radio" name="风险"> 
-                                                                        <label><i class="mdi mdi-check"></i> 特殊插管设备、材料</label>
-                                                                      </div>
-                                        </td>
-                            </tr>
-            </table>
-            <table cellspacing="0"   width="1350"  style="margin: auto;" cellpadding="1">
-                            <tr  height="45">
-                                    <td >&nbsp;&nbsp;麻醉计划：</td> 
-                            </tr>
-            </table>
-            <table  border="1"	bgcolor="#E6E6FA"  cellspacing="0"   width="1350"  style="margin: auto;" cellpadding="1" >
-                <tr  height="45">
-                       
-                        <td>   &nbsp;&nbsp; <div class="pretty inline">
-                                        <input type="radio" name="麻醉"> 
-                                        <label><i class="mdi mdi-check"></i> 全身麻醉</label>
-                                      </div>    </td> 
-                
-                        <td      >&nbsp;&nbsp;<div class="pretty inline">
-                                        <input type="radio" name="麻醉"> 
-                                        <label><i class="mdi mdi-check"></i> 区域阻滞</label>
-                                      </div></td> 
-                        <td      >&nbsp;&nbsp;<div class="pretty inline">
-                                        <input type="radio" name="麻醉"> 
-                                        <label><i class="mdi mdi-check"></i> 局部麻醉</label>
-                                      </div></td> 
-                        <td      >&nbsp;&nbsp;变更麻醉方法：
-                       <div class="pretty inline">
-                                        <input type="radio" name="变更麻醉方法"> 
-                                        <label><i class="mdi mdi-check"></i> 有</label>
-                                      </div>
-                                      <div class="pretty inline">
-                                                <input type="radio" name="变更麻醉方法"> 
-                                                <label><i class="mdi mdi-check"></i> 无</label>
-                                              </div></td>
-                     
+                        </div>
+                        <div class="pretty inline">
+                                <input type="radio" name="麻醉准备" value="01">
+                                <label><i class="mdi mdi-check"></i> 需特殊准备：专科会诊治疗</label>
+                        </div>
+
+        </tr>
+        <tr height="45">
+                <td>&nbsp;&nbsp;风险防范措施</td>
+                <td>&nbsp;&nbsp;<div class="pretty inline">
+                                <input type="radio" name="风险" value="1000">
+                                <label><i class="mdi mdi-check"></i> 抢救药品</label>
+                        </div>
+                        <div class="pretty inline">
+                                <input type="radio" name="风险" value="0100">
+                                <label><i class="mdi mdi-check"></i> 有创监测</label>
+                        </div>
+                        <div class="pretty inline">
+                                <input type="radio" name="风险" value="0010">
+                                <label><i class="mdi mdi-check"></i> 大静脉通道</label>
+                        </div>
+                        <div class="pretty inline">
+                                <input type="radio" name="风险" value="0001">
+                                <label><i class="mdi mdi-check"></i> 特殊插管设备、材料</label>
+                        </div>
+                </td>
+        </tr>
+</table>
+<table cellspacing="0" width="1350" style="margin: auto;" cellpadding="1">
+        <tr height="45">
+                <td>&nbsp;&nbsp;<b>麻醉计划：</b></td>
+        </tr>
+</table>
+<table border="1" bgcolor="#E6E6FA" cellspacing="0" width="1350" style="margin: auto;" cellpadding="1">
+        <tr height="45">
+
+                <td> &nbsp;&nbsp; <div class="pretty inline">
+                                <input type="radio" name="麻醉" value="100">
+                                <label><i class="mdi mdi-check"></i> 全身麻醉</label>
+                        </div>
+                </td>
+
+                <td>&nbsp;&nbsp;<div class="pretty inline">
+                                <input type="radio" name="麻醉" value="010">
+                                <label><i class="mdi mdi-check"></i> 区域阻滞</label>
+                        </div>
+                </td>
+                <td>&nbsp;&nbsp;<div class="pretty inline">
+                                <input type="radio" name="麻醉" value="001">
+                                <label><i class="mdi mdi-check"></i> 局部麻醉</label>
+                        </div>
+                </td>
+                <td>&nbsp;&nbsp;变更麻醉方法：
+                        <div class="pretty inline">
+                                <input type="radio" name="变更麻醉方法" value="10">
+                                <label><i class="mdi mdi-check"></i> 有</label>
+                        </div>
+                        <div class="pretty inline">
+                                <input type="radio" name="变更麻醉方法" value="01">
+                                <label><i class="mdi mdi-check"></i> 无</label>
+                        </div>
+                </td>
+
+        </tr>
+</table>
+<br>
+<table bgcolor="#B0C4DE" cellspacing="1" width="1350" style="margin: auto;" cellpadding="1" frame=hsides>
+        <tr height="45">
+                <td>&nbsp;&nbsp;麻醉前第一次评估</td>
+                <td>&nbsp;&nbsp;麻醉住院/主治医生：</td>
+                <td>&nbsp;&nbsp;日期：</td>
+                <td>&nbsp;&nbsp;年</td>
+                <td>&nbsp;&nbsp;月</td>
+                <td>&nbsp;&nbsp;日</td>
+        </tr>
+</table>
+<table bgcolor="#B0C4DE" cellspacing="1" width="1350" style="margin: auto;" cellpadding="1" frame=hsides>
+        <tr height="45">
+                <td>&nbsp;&nbsp;麻醉前第二次评估</td>
+                <td>&nbsp;&nbsp;麻醉住院/主治医生：</td>
+                <td>&nbsp;&nbsp;日期：</td>
+                <td>&nbsp;&nbsp;年</td>
+                <td>&nbsp;&nbsp;月</td>
+                <td>&nbsp;&nbsp;日</td>
+        </tr>
+</table>
+<div class="content">
+
+
+        <table bgcolor="#B0C4DE" cellspacing="1" width="1350" style="margin: auto;" cellpadding="1" frame=hsides>
+                <tr>
+                        <div id="btnSection1" align="center">
+                                <div class="col-md-4 col-lg-4 col-sm-4">
+                                        <div class="button-container border-right">
+                                                <button id="button" class="magicBtn">此按钮用于二次上传的测试</button>
+                                        </div> <!-- /.button-container -->
+                                </div>
+                        </div>
                 </tr>
-            </table>
-            <br>
-            <table 	bgcolor="#B0C4DE"cellspacing="1"   width="1350"  style="margin: auto;" cellpadding="1" frame=hsides>
-                        <tr  height="45">
-                                <td >&nbsp;&nbsp;麻醉前第一次评估</td> 
-                                <td      >&nbsp;&nbsp;麻醉住院/主治医生：</td> 
-                                <td      >&nbsp;&nbsp;日期：</td> 
-                                <td      >&nbsp;&nbsp;年</td> 
-                                <td      >&nbsp;&nbsp;月</td>
-                                <td      >&nbsp;&nbsp;日</td> 
-                        </tr>
-        </table>
-        <table bgcolor="#B0C4DE" cellspacing="1"   width="1350"  style="margin: auto;" cellpadding="1" frame=hsides>
-                        <tr  height="45">
-                                <td >&nbsp;&nbsp;麻醉前第二次评估</td> 
-                                <td      >&nbsp;&nbsp;麻醉住院/主治医生：</td> 
-                                <td      >&nbsp;&nbsp;日期：</td> 
-                                <td      >&nbsp;&nbsp;年</td> 
-                                <td      >&nbsp;&nbsp;月</td>
-                                <td      >&nbsp;&nbsp;日</td> 
-                        </tr>
         </table>
         <div class="content">
-		
-              
-        <input type="button" value="此按钮用于二次传输测试" onclick="load()"/>
-    <!-- 测试模组开始 -->
-        <script src="demo/highlight-9.5.0.min.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
-	<script src="dist/js/checkbix.min.js"></script>
-	<script type="text/javascript">
-		Checkbix.init();
-	</script>
-    <!-- 测试模组结束 -->
-    </body>
-    <script src="./kkk.js"></script>
-    <script src="./centertable_func.js"></script>
-    <script src="./centertable.js"></script>
+                <div class="htmleaf-container">
+                        <!-- 测试模组开始 -->
+                        <script src="demo/highlight-9.5.0.min.js"></script>
+                        <script>hljs.initHighlightingOnLoad();</script>
+                        <script src="dist/js/checkbix.min.js"></script>
+                        <script type="text/javascript">
+                                Checkbix.init();
+                        </script>
+                        <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+                        <script src="js/magicBtn.js" type="text/javascript"></script>
+                        <script src="js/main.js" type="text/javascript"></script>
+                        <!-- 测试模组结束 -->
+                        </body>
+                        <script src="./kkk.js"></script>
+                        <script src="./centertable_func.js"></script>
+                        <script src="./centertable.js"></script>
 
-    
-    </html>
+
+</html>
