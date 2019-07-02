@@ -230,20 +230,55 @@ for(let index in itemsclasslist) {
 }
 
 $(function() {
-    let inputbox = "<input type='text' name='patient_num' class='patient_num' placeholder='测试框：输入病床号'/>";
-    let httpbutton1 = "<button class=\"query\">测试按键：获取</button>";
-    let httpbutton2 = "<button class=\"update\">测试按键：提交</button>";
-    $(".secondcontent").before(inputbox,httpbutton1);
-    $(".secondcontent").after(httpbutton2);
+    // $("#test").hide();
+    // $("#test3").hide();
+    // $("#test2").hide();
+    console.log("页面数据：" );console.log(a);
+        $.magicBtn('#btnSection1',{
+            buttonType: 'material',
+        });
+        $.magicBtn('#btnSection2',{
+            buttonType: 'material',
+        });
+        $("#button").hide();
+        $('#button').click(function(){
+            if(clickBtn1 == 'true') {
+                submit2();
+                clickBtn1 = 'false';
+            };
+    
+            if(clickBtn2 == 'true') {
+                clickBtn2 = 'false';
+            } else {
+                clickBtn2 = 'true';
+            }
+        });
+        $('#button2').click(function(){
+            if(clickBtn3 == 'true') {
+                 myhttp.updaterequest();
+                clickBtn3 = 'false';
+            };
+    
+            if(clickBtn4 == 'true') {
+                clickBtn4 = 'false';
+            } else {
+                clickBtn4 = 'true';
+            }
+        });
+    // let inputbox = "<input type='text' name='patient_num' class='patient_num' placeholder='测试框：输入病床号'/>";
+    // let httpbutton1 = "<button class=\"query\">测试按键：获取</button>";
+    // let httpbutton2 = "<button class=\"update\">测试按键：提交</button>";
+    // $(".secondcontent").before(inputbox,httpbutton1);
+    // $(".secondcontent").after(httpbutton2);
 
     let myhttp = new HttpRequest();
     $(".query").click(function(){
         myhttp.setpatientnum($(".patient_num").val().toString());
         myhttp.queryrequest();
     });
-    $(".update").click(function(){
-        myhttp.updaterequest();
-    });
+    // $(".update").click(function(){
+    //     myhttp.updaterequest();
+    // });
 
     //渲染输入的多个整行对象
     for(tr of itemsclasslist) {
@@ -256,3 +291,195 @@ $(function() {
         itemsclasslist[index].initidcfg(handlelist[index],handlelist[index].queue);
     }
 });
+var debug = false;
+
+(function ( $ ) {
+
+    $.magicBtn = function(selector, options) {
+
+        var settings = $.extend({
+            buttonType: '',
+            rounded: false,
+            fill: false
+        }, options);
+
+        if(settings.buttonType != '' && settings.buttonType != 'material' && settings.buttonType != 'outline') {
+            settings.buttonType = 'material';
+        }
+
+        if(settings.buttonType != '') {
+            var selector = selector + ' button';
+            jQuery(selector).each(function () {
+                jQuery(this).addClass('magicBtn');
+                jQuery(this).addClass(settings.buttonType);
+            });
+        }
+
+        if(settings.buttonType == 'outline' && settings.fill){
+            //Add hover property
+            jQuery(selector).each(function () {
+                jQuery(this).addClass('fill');
+            });
+        }
+
+        if(settings.rounded) {
+            jQuery(selector).each(function () {
+                jQuery(this).addClass('round');
+            });
+        }
+
+        // 第一次点击-文字变为提交中，loadingIcon变为true,并添加icon: '<i class="fas fa-spinner fa-spin fa-1x fa-fw"></i>',
+        $.fn.startLoading = function (options) {
+           
+            $(this).attr('data-initial-text', $(this).text());
+            var settings = $.extend({
+                loadingText: '提交中...',
+                //Icon options
+                loadingIcon: true,
+                icon: '<i class="fas fa-spinner fa-spin fa-1x fa-fw"></i>',
+            }, options );
+            $(this).text(settings.loadingText);
+            if(settings.loadingIcon) {
+                $(this).append(settings.icon);
+            }
+         
+            return this;
+
+        }
+
+        // 第二次点击，输入option={status:'XXX'}，可为success / warning / error
+        $.fn.resultLoading = function (options) {
+            //防止startLoading没有启用，如果没启用就添加data-initial-text属性，内容为空
+            if($(this).attr('data-initial-text') === undefined) {
+                var initialText = $(this).text();
+                $(this).attr('data-initial-text',initialText);
+            }
+            // 初始化button属性：initialText，status，statusText，statusIcon，disabled，并把输入的option代入status
+            var settings = $.extend({
+                initialText: $(this).attr('data-initial-text'),
+                status: 'success',
+                statusText: '',
+                statusIcon: '',
+                disabled: false,
+            }, options);
+
+            // 根据settings.status抛出异常状况
+            if( settings.status != 'success' &&
+                settings.status != 'warning' &&
+                settings.status != 'error'
+            ) {
+                throw new Error('resutLoading must be one of: success,warning,error');
+            }
+
+            var disabledFunction = function (element) {
+                element.attr('disabled',true);
+                element.addClass('disabled');
+            }
+
+            //status=success时
+            if(settings.status == 'success') {
+
+                if(settings.statusText == '') { settings.statusText = '已成功上传，点击再次上传';}
+                if(settings.statusIcon == '') { settings.statusIcon = '';}
+
+                $(this).text(settings.statusText).append(settings.statusIcon);
+                $(this).addClass('success');
+
+                if(settings.disabled) {
+                    disabledFunction($(this));
+                }
+
+                return this;
+            }
+            // status=warning时
+            if(settings.status == 'warning') {
+
+                if(settings.statusText == '') { settings.statusText = '检测到使用者为坤坤，禁止访问';}
+                if(settings.statusIcon == '') { settings.statusIcon = '';}
+
+                $(this).text(settings.statusText).append(settings.statusIcon);
+                $(this).addClass('warning');
+
+                if(settings.disabled) {
+                    disabledFunction($(this));
+                }
+
+                return this;
+            }
+            // status=error时
+            if(settings.status == 'error') {
+
+                if(settings.statusText == '') { settings.statusText = '上传失败,点击再次上传';}
+                if(settings.statusIcon == '') { settings.statusIcon = '';}
+
+                $(this).text(settings.statusText).append(settings.statusIcon);
+                $(this).addClass('error');
+
+                if(settings.disabled) {
+                    disabledFunction($(this));
+                }
+
+                return this;
+            }
+
+            //Default action
+            $(this).text(settings.initialText);
+
+            if(settings.disabled) {
+                disabledFunction($(this));
+            }
+
+            return this;
+        }
+
+        $.fn.removeLoading = function (options) {
+
+            var settings = $.extend({
+                //Initial text
+                text: $(this).attr('data-initial-text'),
+
+            }, options);
+
+            //Default action
+            $(this).text(settings.text);
+            $(this).removeClass('success warning error');
+            return this;
+
+        }
+
+        $.fn.disabled = function() {
+            $(this).addClass('disabled');
+            $(this).attr('disabled',true);
+            return this;
+        }
+
+        $.fn.fillUpButton = function(e) {
+
+            var target = e.target;
+            var rect = target.getBoundingClientRect();
+            var ripple = target.querySelector('.ripple');
+
+            $(ripple).remove();
+            ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            ripple.style.height = ripple.style.width = Math.max(rect.height, rect.width) + 'px';
+            target.appendChild(ripple);
+            var top = e.pageY - rect.top - ripple.offsetHeight / 2 - document.body.scrollTop;
+            var left = e.pageX - rect.left - ripple.offsetWidth / 2 - document.body.scrollLeft;
+            ripple.style.top = top + 'px';
+            ripple.style.left = left + 'px';
+            return false;
+
+        }
+
+      
+        $(document).on('click','button.magicBtn.material',function(e) {
+            $(this).fillUpButton(e);
+        });
+
+    } 
+
+}(jQuery)); 
+function cl(element) {
+    if(debug) console.log('CL FUNCTION',element);
+};
