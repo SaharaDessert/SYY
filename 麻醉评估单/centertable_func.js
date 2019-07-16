@@ -184,6 +184,11 @@ let initsecondmode = function(first,secondoption){
     let trmode = "<div><input type=\"checkbox\" name=\""+first+"\" id=\""+secondoption+"\" value=\""+secondoption+"\"><label class=\""+secondoption+" able\">"+secondoption+ "</label></div>"
     $("."+first+" .secondlevel").append(trmode);
 }
+//第三列的盒子预置
+let initthirdmode = function(first,secondoption){
+    let trmode = "<div class='"+secondoption+"'></div>";
+    $("."+first+" .summurylevel").append(trmode);
+}
 //初始化系统视图
 let inittableview = function(first,second) {
     let firsttd = "<div>"+first+"</div>";
@@ -197,6 +202,9 @@ let inittableview = function(first,second) {
     $("."+first+" .firstlevel label:last").attr("for",first+"N");
     for(let secondoption of second) {
         initsecondmode(first,secondoption);
+    }
+    for(let secondoption of second) {
+        initthirdmode(first,secondoption);
     }
 }
 
@@ -437,10 +445,13 @@ class TableItems {
     btngoback(firstindex,secondindex) {
         //hideadvance();
         thirdclassmatrix[firstindex][secondindex].updateidcfg();
+        this.checksummury(thirdclassmatrix[firstindex][secondindex],this.thirdclass[secondindex]);
         if(Number(thirdclassmatrix[firstindex][secondindex].queue) == 0) {
             $("#"+this.secondclass[secondindex]).prop("checked",false);
+            $("#"+this.secondclass[secondindex]).next().removeClass("chosen");
         } else {
             $("#"+this.secondclass[secondindex]).prop("checked",true);
+            $("#"+this.secondclass[secondindex]).next().addClass("chosen");
         }
         handlelist[firstindex].updateidcfg();
         //clearadvancedcontent();
@@ -454,7 +465,9 @@ class TableItems {
     btnclear(firstindex,secondindex) {
         //hideadvance();
         thirdclassmatrix[firstindex][secondindex].clearidcfg();
+        this.checksummury(thirdclassmatrix[firstindex][secondindex],this.thirdclass[secondindex]);
         $("#"+this.secondclass[secondindex]).prop("checked",false);
+        $("#"+this.secondclass[secondindex]).next().removeClass("chosen");
         handlelist[firstindex].updateidcfg();
         //clearadvancedcontent();
         //$("button").unbind("click");
@@ -467,10 +480,14 @@ class TableItems {
     btnsave(firstindex,secondindex) {
         //hideadvance();
         thirdclassmatrix[firstindex][secondindex].updateidcfg();
+        //检测并输入第三列内容
+        this.checksummury(thirdclassmatrix[firstindex][secondindex],this.thirdclass[secondindex]);
         if(Number(thirdclassmatrix[firstindex][secondindex].queue) == 0) {
             $("#"+this.secondclass[secondindex]).prop("checked",false);
+            $("#"+this.secondclass[secondindex]).next().removeClass("chosen");
         } else {
             $("#"+this.secondclass[secondindex]).prop("checked",true);
+            $("#"+this.secondclass[secondindex]).next().addClass("chosen");
         }
         handlelist[firstindex].updateidcfg();
         //clearadvancedcontent();
@@ -478,6 +495,37 @@ class TableItems {
         $("."+this.secondclass[secondindex]+".advance").remove();
         $("."+this.secondclass[secondindex]).removeClass("advanced");
         console.log(thirdclassmatrix[firstindex][secondindex].queue);
+    }
+    checksummury(id3rd,obj) {
+        //先判断 删除，更新 给每一个二级栏目用于识别的属性
+        let title = "<div class='title'>"+id3rd.name+"</div>";
+        let contents = "";
+        let index = 0;
+        if(Number(id3rd.queue) != 0) {
+            for (let key in obj) {
+                let length = obj[key].length;
+                let innerindex = 0;
+                if(Number(id3rd.queue.substr(index,length)) != 0) {
+                    let thirdtitle = "<span class='innertitle'>"+key+": </span>";
+                    while(innerindex < length) {
+                        if(id3rd.list[index] == '1') {
+                            let thirdoption = "<span>"+obj[key][innerindex]+"  </span>";
+                            thirdtitle += thirdoption;
+                        }
+                        innerindex++;
+                        index++;
+                    }
+                    contents += "<div>"+thirdtitle+"</div>";
+                } else {
+                    index += length;
+                }
+            }
+            contents = "<div class='contents'>"+contents+"</div>";
+            let summury = title + contents;
+            $("."+this.firstclass+" .summurylevel"+" ."+id3rd.name).html(summury);
+        } else {
+            $("."+this.firstclass+" .summurylevel"+" ."+id3rd.name).empty();
+        }
     }
 }
 
